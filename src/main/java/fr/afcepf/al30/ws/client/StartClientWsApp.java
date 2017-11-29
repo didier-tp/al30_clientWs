@@ -1,15 +1,26 @@
 package fr.afcepf.al30.ws.client;
 
 import java.net.URL;
+import java.util.List;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
+import fr.afcepf.al30.data.Devise;
+import fr.afcepf.al30.ws.service.IServiceDevise;
 import fr.afcepf.al30.ws.service.IServiceTva;
 
 public class StartClientWsApp {
 
 	public static void main(String[] args) {
+		IServiceDevise serviceDeviseLocalOuDistant = new ServiceDeviseBusinessDelegate();
+		List<Devise> listeDev = serviceDeviseLocalOuDistant.rechercherToutesDevises();
+		for(Devise d : listeDev){
+			System.out.println(d);
+		}
+	}
+	
+	public static void main1(String[] args) {
 		
 		try {
 			String machineServeur="FORM062"; //ou "192.168.102.151";

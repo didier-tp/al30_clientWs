@@ -12,4 +12,15 @@
 	 <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	 <failOnMissingWebXml>false</failOnMissingWebXml>
   </properties>
+  
+  <dependencies>
+  
+  <dependency>
+ <groupId>org.projectlombok</groupId>
+ <artifactId>lombok</artifactId>
+ <version>1.16.10</version> <!-- or via spring boot version -->
+</dependency>
+
+</dependencies>
+
 </project>
