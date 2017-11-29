@@ -13,7 +13,9 @@ import fr.afcepf.al30.ws.service.IServiceTva;
 public class StartClientWsApp {
 
 	public static void main(String[] args) {
+		//code portable fonctionnant partout
 		IServiceDevise serviceDeviseLocalOuDistant = new ServiceDeviseBusinessDelegate();
+		//eventuel @Autowired ou @Inject ou ....getInstance()  à la place du new selon contexte
 		List<Devise> listeDev = serviceDeviseLocalOuDistant.rechercherToutesDevises();
 		for(Devise d : listeDev){
 			System.out.println(d);

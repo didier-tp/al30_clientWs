@@ -2,13 +2,13 @@ package fr.afcepf.al30.ws.client;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Properties;
 
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
 import fr.afcepf.al30.data.Devise;
 import fr.afcepf.al30.ws.service.IServiceDevise;
-import fr.afcepf.al30.ws.service.IServiceTva;
 
 public class ServiceDeviseBusinessDelegate implements IServiceDevise{
 	
@@ -16,13 +16,12 @@ public class ServiceDeviseBusinessDelegate implements IServiceDevise{
 	
 	private void initSoapProxy(){
 		try {
-			String machineServeur="FORM062"; //ou "192.168.102.151";
-			//String machineServeur="localhost";//ou adress ip (ipconfig)
-			String portTcpIp="8080"; //ou 8081
-			URL wsdlUrl = new URL("http://" +
-			                      machineServeur + ":" + portTcpIp
-			                      + "/serveurWs/services/devise?wsdl");
-			
+			Properties props = new Properties(); //java.util
+			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("ws.properties"));
+			String wsdlUrlAsString = props.getProperty("devise.wsdl");
+			System.out.println("wsdlUrlAsString="+wsdlUrlAsString);
+			URL wsdlUrl = new URL(wsdlUrlAsString);
+		
 			
 			QName SERVICE_NAME = new QName("http://service.ws.al30.afcepf.fr/",
 					                       "ServiceDeviseImplService");
