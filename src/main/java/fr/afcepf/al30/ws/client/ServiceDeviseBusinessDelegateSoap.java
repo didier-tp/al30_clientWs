@@ -10,14 +10,15 @@ import javax.xml.ws.Service;
 import fr.afcepf.al30.data.Devise;
 import fr.afcepf.al30.ws.service.IServiceDevise;
 
-public class ServiceDeviseBusinessDelegate implements IServiceDevise{
+public class ServiceDeviseBusinessDelegateSoap implements IServiceDevise{
 	
 	private IServiceDevise proxyWsDevise; //proxy vers WS distant
 	
 	private void initSoapProxy(){
 		try {
 			Properties props = new Properties(); //java.util
-			props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream("ws.properties"));
+			props.load(Thread.currentThread()
+					   .getContextClassLoader().getResourceAsStream("ws.properties"));
 			String wsdlUrlAsString = props.getProperty("devise.wsdl");
 			System.out.println("wsdlUrlAsString="+wsdlUrlAsString);
 			URL wsdlUrl = new URL(wsdlUrlAsString);
@@ -37,7 +38,7 @@ public class ServiceDeviseBusinessDelegate implements IServiceDevise{
 		}
 	}
 	
-	public ServiceDeviseBusinessDelegate(){
+	public ServiceDeviseBusinessDelegateSoap(){
 		initSoapProxy();
 	}
 

@@ -14,12 +14,17 @@ public class StartClientWsApp {
 
 	public static void main(String[] args) {
 		//code portable fonctionnant partout
-		IServiceDevise serviceDeviseLocalOuDistant = new ServiceDeviseBusinessDelegate();
+		IServiceDevise serviceDeviseLocalOuDistant = 
+				//new ServiceDeviseBusinessDelegateSoap();
+		        new ServiceDeviseBusinessDelegateRest();
 		//eventuel @Autowired ou @Inject ou ....getInstance()  à la place du new selon contexte
 		List<Devise> listeDev = serviceDeviseLocalOuDistant.rechercherToutesDevises();
 		for(Devise d : listeDev){
 			System.out.println(d);
 		}
+		
+		Devise devEur = serviceDeviseLocalOuDistant.rechercherDeviseParCode("EUR");
+		System.out.println("devise euro : " + devEur);
 	}
 	
 	public static void main1(String[] args) {
